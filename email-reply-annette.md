@@ -1,7 +1,7 @@
 # Réponse à Annette Pasquier (bethusy-art.ch)
 
 > À créer dans la boîte **contact@hugowebdesign.com** (en réponse au fil existant).
-> Remplacer `[LIEN DE PRÉVISUALISATION]` par l'URL Vercel après déploiement.
+> Remplacer `https://vivelebacon.github.io/bethusy-art/` par l'URL Vercel après déploiement.
 
 **Objet :** Re: votre site bethusy-art.ch
 
@@ -27,7 +27,7 @@ Concernant les contenus, votre remarque est légitime :
 - Vous restez l'unique propriétaire de l'ensemble de ces contenus. Si vous le souhaitez, je retire la démonstration immédiatement, sans aucune difficulté.
 
 Voici l'aperçu, à regarder à votre rythme :
-[LIEN DE PRÉVISUALISATION]
+https://vivelebacon.github.io/bethusy-art/
 
 Encore une fois, aucun engagement et aucune relance de ma part. Si cela vous parle, j'en serais ravi. Si ce n'est pas le moment, je le comprends parfaitement.
 

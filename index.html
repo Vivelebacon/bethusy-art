@@ -788,11 +788,14 @@ mmenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mmenu.cla
 
 /* ===== preloader ===== */
 const reduced=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-function startSite(){document.body.classList.remove("loading");initMotion();}
+function revealAll(){document.querySelectorAll(".reveal").forEach(e=>{e.style.opacity="1";e.style.transform="none";});}
+function startSite(){document.body.classList.remove("loading");if(window.gsap){initMotion();}else{revealAll();}}
+// safety net: if a CDN (GSAP/Lenis) is blocked or slow, never leave content hidden
+setTimeout(()=>{if(!window.gsap){const p=document.getElementById("pre");if(p)p.style.display="none";document.body.classList.remove("loading");revealAll();}},2600);
 (function preload(){
   const seen=sessionStorage.getItem("ba_seen");
   const pre=document.getElementById("pre"),curtain=document.getElementById("preCurtain");
-  if(seen||reduced){pre.style.display="none";startSite();return;}
+  if(seen||reduced||!window.gsap){if(pre)pre.style.display="none";startSite();return;}
   const bar=document.getElementById("preBar"),num=document.getElementById("preNum"),pm=document.querySelector("#pmText span");
   let p={v:0};
   gsap.to(pm,{y:0,duration:.9,ease:"power3.out"});
@@ -847,7 +850,7 @@ function initMotion(){
   });
 
   // split section headings
-  document.querySelectorAll(".sec-head h2").forEach(h=>{
+  if(window.SplitText) document.querySelectorAll(".sec-head h2").forEach(h=>{
     const sp=new SplitText(h,{type:"lines",linesClass:"sline"});
     gsap.set(sp.lines,{overflow:"hidden"});
     gsap.from(sp.lines,{yPercent:110,opacity:0,duration:1,stagger:.1,ease:"power4.out",

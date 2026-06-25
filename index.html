@@ -98,24 +98,38 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spa
 .mmenu .mc{margin-top:2rem;color:var(--sand);font-size:.85rem;letter-spacing:.06em}
 
 /* ---------- hero ---------- */
-.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end}
-.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,28,.5) 0%,rgba(20,24,28,.15) 35%,rgba(20,24,28,.55) 100%);z-index:2}
+.hero{position:relative;height:100svh;min-height:660px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform}
+.hero .scrim{position:absolute;inset:0;z-index:2;background:
+  radial-gradient(125% 95% at 50% 38%,rgba(18,22,26,.12) 0%,rgba(18,22,26,.40) 52%,rgba(18,22,26,.74) 100%),
+  linear-gradient(180deg,rgba(18,22,26,.5) 0%,rgba(18,22,26,.06) 40%,rgba(18,22,26,.62) 100%)}
+/* dreamcore colour veil */
+.hero .veil{position:absolute;inset:0;z-index:2;mix-blend-mode:soft-light;opacity:.55;pointer-events:none;
+  background:linear-gradient(125deg,rgba(47,103,132,.55) 0%,transparent 42%,rgba(180,158,120,.55) 100%)}
 .hero .grain{position:absolute;inset:0;z-index:3;opacity:.06;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.hero-inner{position:relative;z-index:4;width:100%;padding:0 clamp(1.2rem,4vw,3.2rem) clamp(2.4rem,5vw,4rem)}
-.hero .eyebrow{color:var(--sand)}
+/* thin editorial frame */
+.hero .frame{position:absolute;inset:clamp(.9rem,2.1vw,1.7rem);z-index:4;border:1px solid rgba(247,243,236,.22);pointer-events:none}
+/* vertical side labels */
+.hero .side{position:absolute;top:50%;z-index:4;color:rgba(247,243,236,.72);font-size:.58rem;letter-spacing:.36em;text-transform:uppercase;font-weight:600;writing-mode:vertical-rl;white-space:nowrap}
+.hero .side.l{left:clamp(1.3rem,2.8vw,2.4rem);transform:translateY(-50%)}
+.hero .side.r{right:clamp(1.3rem,2.8vw,2.4rem);transform:translateY(-50%) rotate(180deg)}
+/* dreamcore curtains (load reveal) */
+.hero-curtains{position:absolute;inset:0;z-index:6;display:flex;pointer-events:none}
+.hero-curtains span{flex:1;height:100%;background:linear-gradient(180deg,var(--sand-soft),var(--sand))}
+.hero-inner{position:relative;z-index:5;width:min(1040px,90vw);padding:0 1rem;display:flex;flex-direction:column;align-items:center}
+.hero .eyebrow{color:var(--sand);justify-content:center}
 .hero .eyebrow::before{background:var(--sand)}
-.hero h1{color:var(--cream);font-size:clamp(2.9rem,8.4vw,7.6rem);font-weight:500;margin:1.1rem 0 0;max-width:16ch}
+.hero .eyebrow::after{content:"";width:34px;height:1px;background:var(--sand)}
+.hero h1{color:var(--cream);font-size:clamp(2.7rem,7.4vw,6.9rem);font-weight:500;margin:1.25rem 0 0;letter-spacing:-.015em;text-shadow:0 2px 48px rgba(0,0,0,.28)}
 .hero h1 .ln{display:block;overflow:hidden}
-.hero p.lead{color:rgba(247,243,236,.9);max-width:46ch;margin-top:1.6rem;font-size:clamp(.98rem,1.4vw,1.12rem);font-weight:300}
-.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.1rem}
-.hero-meta{position:absolute;right:clamp(1.2rem,4vw,3.2rem);bottom:clamp(2.4rem,5vw,4rem);z-index:4;text-align:right;color:var(--cream);display:none}
-.hero-meta .n{font-family:var(--serif);font-size:3.2rem;line-height:1;color:var(--sand)}
-.hero-meta .l{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85;margin-top:.3rem}
-.scrollcue{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:4;color:var(--cream);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.8}
-.scrollcue i{width:1px;height:34px;background:linear-gradient(var(--sand),transparent);animation:cue 1.9s var(--ease) infinite}
-@keyframes cue{0%{transform:scaleY(0);transform-origin:top}40%{transform:scaleY(1);transform-origin:top}60%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero p.lead{color:rgba(247,243,236,.92);max-width:56ch;margin:1.7rem auto 0;font-size:clamp(.98rem,1.4vw,1.14rem);font-weight:300}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.2rem;justify-content:center}
+.hero-meta{display:none}
+.scrollcue{position:absolute;left:50%;bottom:clamp(1.3rem,3vw,2.2rem);transform:translateX(-50%);z-index:5;color:rgba(247,243,236,.85);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.scrollcue .line{width:1px;height:48px;background:rgba(247,243,236,.22);position:relative;overflow:hidden;border-radius:1px}
+.scrollcue .line::after{content:"";position:absolute;left:0;top:0;width:100%;height:42%;border-radius:1px;background:linear-gradient(var(--sand),var(--sand-deep));animation:cueRun 2.4s cubic-bezier(.65,.05,.25,1) infinite}
+@keyframes cueRun{0%{transform:translateY(-110%)}55%{transform:translateY(240%)}100%{transform:translateY(240%)}}
 
 /* ---------- marquee ---------- */
 .marquee{background:var(--ink);color:var(--cream);padding:1.1rem 0;overflow:hidden;white-space:nowrap}
@@ -219,7 +233,7 @@ section{position:relative}
 
 /* quote band */
 .quoteband{position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
-.quoteband .qbg{position:absolute;inset:-12% 0;background-image:url("assets/texture.jpg");background-size:cover;background-position:center;will-change:transform}
+.quoteband .qbg{position:absolute;inset:-12% 0;background-image:url("https://www.bethusy-art.ch/wp-content/uploads/2024/11/Large_open_living_room_with_staircase-1000x700.jpg");background-size:cover;background-position:center;will-change:transform}
 .quoteband::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(247,243,236,.55),rgba(247,243,236,.35))}
 .quoteband .qin{position:relative;z-index:2;width:min(900px,90vw);padding:4rem 1rem}
 .quoteband blockquote{font-family:var(--serif);font-size:clamp(1.8rem,4.6vw,3.6rem);line-height:1.18;color:var(--ink);font-style:italic}
@@ -299,6 +313,8 @@ footer{background:var(--ink);color:var(--cream);padding:clamp(3.5rem,7vw,5.5rem)
   .step p{grid-column:1}
   .marquee span{font-size:1.2rem}
   .hero-meta{display:none}
+  .hero .side{display:none}
+  .hero .frame{inset:.7rem}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -346,9 +362,13 @@ footer{background:var(--ink);color:var(--cream);padding:clamp(3.5rem,7vw,5.5rem)
     <source src="assets/hero-loop.mp4" type="video/mp4" />
   </video>
   <div class="scrim"></div>
+  <div class="veil"></div>
   <div class="grain"></div>
-  <div class="hero-inner wrap">
-    <span class="eyebrow">Bureau d'architecture d'intérieur · Depuis 2009</span>
+  <div class="side l">Lausanne · Suisse</div>
+  <div class="side r">Architecture d'intérieur · Depuis 2009</div>
+  <div class="frame"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Bureau d'architecture d'intérieur</span>
     <h1 id="heroH1"><span class="ln">Architecte</span><span class="ln">d'intérieur à</span><span class="ln serif-it">Lausanne</span></h1>
     <p class="lead">Béthusy-Art & Design met toute son expérience et son savoir-faire au service des particuliers et des entreprises pour concevoir des espaces uniques et personnalisés.</p>
     <div class="hero-cta">
@@ -356,10 +376,8 @@ footer{background:var(--ink);color:var(--cream);padding:clamp(3.5rem,7vw,5.5rem)
       <a href="#realisations" class="btn">Nos réalisations</a>
     </div>
   </div>
-  <div class="hero-meta">
-    <div class="n">15+</div><div class="l">ans d'expérience</div>
-  </div>
-  <div class="scrollcue">Défiler<i></i></div>
+  <div class="hero-curtains" id="heroCurtains" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <a href="#expertise" class="scrollcue"><span>Défiler</span><span class="line"></span></a>
 </header>
 
 <!-- marquee -->
@@ -802,11 +820,8 @@ setTimeout(()=>{if(!window.gsap){const p=document.getElementById("pre");if(p)p.s
   gsap.to(p,{v:100,duration:1.15,ease:"power1.inOut",delay:.15,
     onUpdate:()=>{bar.style.transform=`scaleX(${p.v/100})`;num.textContent=Math.round(p.v);},
     onComplete:()=>{
-      const tl=gsap.timeline({onComplete:()=>{pre.style.display="none";sessionStorage.setItem("ba_seen","1");startSite();}});
-      tl.to(pre,{opacity:0,duration:.5,delay:.15})
-        .fromTo(curtain,{y:"100%"},{y:"0%",duration:.6,ease:"power3.inOut"},"-=0.4")
-        .set(curtain,{y:"-100%"}).to(curtain,{y:"-100%",duration:.01})
-        .fromTo(curtain,{y:"0%"},{y:"-100%",duration:.7,ease:"power3.inOut"});
+      gsap.to(pre,{opacity:0,duration:.5,delay:.1,ease:"power2.out",
+        onComplete:()=>{pre.style.display="none";sessionStorage.setItem("ba_seen","1");startSite();}});
     }});
 })();
 
@@ -827,21 +842,29 @@ function initMotion(){
       if(lenis)lenis.scrollTo(el,{offset:-10,duration:1.2});else el.scrollIntoView({behavior:"smooth"});});
   });
 
-  if(reduced)return;
+  if(reduced){const c=document.getElementById("heroCurtains");if(c)c.style.display="none";return;}
 
-  // hero headline reveal
+  // hero entrance: dreamcore curtains lift, then content reveals
+  const curtainSpans=gsap.utils.toArray("#heroCurtains span");
   const h1lines=document.querySelectorAll("#heroH1 .ln");
   gsap.set(h1lines,{yPercent:115});
-  const tl=gsap.timeline({delay:.15});
-  tl.to(h1lines,{yPercent:0,duration:1.1,stagger:.12,ease:"power4.out"})
-    .from(".hero .eyebrow",{opacity:0,y:18,duration:.7},"-=0.9")
+  const heroTl=gsap.timeline({delay:.05});
+  heroTl.to(curtainSpans,{yPercent:-100,duration:1.15,stagger:.09,ease:"power4.inOut",
+            onComplete:()=>{const c=document.getElementById("heroCurtains");if(c)c.style.display="none";}})
+    .to(h1lines,{yPercent:0,duration:1.1,stagger:.12,ease:"power4.out"},"-=0.65")
+    .from(".hero .eyebrow",{opacity:0,y:18,duration:.7},"-=0.95")
+    .from(".hero .side",{opacity:0,duration:.9,stagger:.12},"-=0.85")
+    .from(".hero .frame",{opacity:0,scale:1.05,duration:1,ease:"power2.out"},"-=0.95")
     .from(".hero p.lead",{opacity:0,y:22,duration:.8},"-=0.7")
     .from(".hero-cta .btn",{opacity:0,y:22,duration:.7,stagger:.1},"-=0.6")
-    .from(".scrollcue",{opacity:0,duration:.6},"-=0.3");
+    .from(".scrollcue",{opacity:0,y:10,duration:.6},"-=0.3");
 
-  // hero parallax
-  gsap.to("#heroVid",{yPercent:14,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
-  gsap.to(".hero-inner",{yPercent:-8,opacity:.55,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
+  // slow Ken Burns drift on the hero media (continuous)
+  gsap.fromTo("#heroVid, #heroPoster",{scale:1.08},{scale:1.16,duration:16,ease:"sine.inOut",repeat:-1,yoyo:true});
+
+  // hero parallax on scroll
+  gsap.to("#heroVid",{yPercent:12,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
+  gsap.to(".hero-inner",{yPercent:-6,opacity:.5,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
 
   // generic reveals
   gsap.utils.toArray(".reveal").forEach(el=>{

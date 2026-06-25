@@ -750,13 +750,13 @@ let lbList=[],lbIdx=0;
 function openLb(list,i){lbList=list;lbIdx=i;showLb();lb.classList.add("open");lb.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";}
 function showLb(){const g=lbList[lbIdx];lbImg.src=g.s;lbImg.alt=g.a;lbCap.textContent=g.a;}
 function closeLb(){lb.classList.remove("open");lb.setAttribute("aria-hidden","true");document.body.style.overflow="";}
-function nav(d){lbIdx=(lbIdx+d+lbList.length)%lbList.length;showLb();}
+function lbNav(d){lbIdx=(lbIdx+d+lbList.length)%lbList.length;showLb();}
 document.getElementById("lbClose").onclick=closeLb;
-document.getElementById("lbPrev").onclick=()=>nav(-1);
-document.getElementById("lbNext").onclick=()=>nav(1);
+document.getElementById("lbPrev").onclick=()=>lbNav(-1);
+document.getElementById("lbNext").onclick=()=>lbNav(1);
 lb.addEventListener("click",e=>{if(e.target===lb)closeLb();});
 document.addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;
-  if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")nav(1);if(e.key==="ArrowLeft")nav(-1);});
+  if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")lbNav(1);if(e.key==="ArrowLeft")lbNav(-1);});
 
 /* ===== services accordion ===== */
 document.querySelectorAll(".svc").forEach(svc=>{

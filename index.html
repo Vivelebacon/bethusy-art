@@ -18,6 +18,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://www.bethusy-art.ch" />
+<link rel="preload" as="image" href="https://www.bethusy-art.ch/wp-content/uploads/2024/11/Dining_room_with_modern_wooden_furniture-scaled.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -98,8 +100,11 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spa
 .mmenu .mc{margin-top:2rem;color:var(--sand);font-size:.85rem;letter-spacing:.06em}
 
 /* ---------- hero ---------- */
-.hero{position:relative;height:100svh;min-height:660px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
-.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform}
+.hero{position:relative;height:100svh;min-height:660px;overflow:hidden;text-align:center;perspective:1400px}
+.hero-3d{position:absolute;inset:0;z-index:1;transform-style:preserve-3d;display:flex;align-items:center;justify-content:center;will-change:transform}
+.hero-bg{position:absolute;top:-12%;left:-12%;width:124%;height:124%;background-color:var(--ink);
+  background-image:url("https://www.bethusy-art.ch/wp-content/uploads/2024/11/Dining_room_with_modern_wooden_furniture-scaled.jpg"),url("assets/hero-poster.jpg");
+  background-size:cover;background-position:center;transform:translateZ(-180px) scale(1.34);transform-origin:50% 50%;will-change:transform;backface-visibility:hidden}
 .hero .scrim{position:absolute;inset:0;z-index:2;background:
   radial-gradient(125% 95% at 50% 38%,rgba(18,22,26,.12) 0%,rgba(18,22,26,.40) 52%,rgba(18,22,26,.74) 100%),
   linear-gradient(180deg,rgba(18,22,26,.5) 0%,rgba(18,22,26,.06) 40%,rgba(18,22,26,.62) 100%)}
@@ -117,7 +122,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spa
 /* dreamcore curtains (load reveal) */
 .hero-curtains{position:absolute;inset:0;z-index:6;display:flex;pointer-events:none}
 .hero-curtains span{flex:1;height:100%;background:linear-gradient(180deg,var(--sand-soft),var(--sand))}
-.hero-inner{position:relative;z-index:5;width:min(1040px,90vw);padding:0 1rem;display:flex;flex-direction:column;align-items:center}
+.hero-inner{position:relative;z-index:5;width:min(1040px,90vw);padding:0 1rem;display:flex;flex-direction:column;align-items:center;transform:translateZ(28px)}
 .hero .eyebrow{color:var(--sand);justify-content:center}
 .hero .eyebrow::before{background:var(--sand)}
 .hero .eyebrow::after{content:"";width:34px;height:1px;background:var(--sand)}
@@ -357,25 +362,24 @@ footer{background:var(--ink);color:var(--cream);padding:clamp(3.5rem,7vw,5.5rem)
 
 <!-- hero -->
 <header class="hero" id="hero">
-  <img class="poster" src="assets/hero-poster.jpg" alt="" aria-hidden="true" id="heroPoster" />
-  <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" id="heroVid">
-    <source src="assets/hero-loop.mp4" type="video/mp4" />
-  </video>
-  <div class="scrim"></div>
-  <div class="veil"></div>
+  <div class="hero-3d" id="hero3d">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="scrim"></div>
+    <div class="veil"></div>
+    <div class="hero-inner">
+      <span class="eyebrow">Bureau d'architecture d'intérieur</span>
+      <h1 id="heroH1"><span class="ln">Architecte</span><span class="ln">d'intérieur à</span><span class="ln serif-it">Lausanne</span></h1>
+      <p class="lead">Béthusy-Art & Design met toute son expérience et son savoir-faire au service des particuliers et des entreprises pour concevoir des espaces uniques et personnalisés.</p>
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-fill">Découvrir nos services</a>
+        <a href="#realisations" class="btn">Nos réalisations</a>
+      </div>
+    </div>
+  </div>
   <div class="grain"></div>
   <div class="side l">Lausanne · Suisse</div>
   <div class="side r">Architecture d'intérieur · Depuis 2009</div>
   <div class="frame"></div>
-  <div class="hero-inner">
-    <span class="eyebrow">Bureau d'architecture d'intérieur</span>
-    <h1 id="heroH1"><span class="ln">Architecte</span><span class="ln">d'intérieur à</span><span class="ln serif-it">Lausanne</span></h1>
-    <p class="lead">Béthusy-Art & Design met toute son expérience et son savoir-faire au service des particuliers et des entreprises pour concevoir des espaces uniques et personnalisés.</p>
-    <div class="hero-cta">
-      <a href="#services" class="btn btn-fill">Découvrir nos services</a>
-      <a href="#realisations" class="btn">Nos réalisations</a>
-    </div>
-  </div>
   <div class="hero-curtains" id="heroCurtains" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
   <a href="#expertise" class="scrollcue"><span>Défiler</span><span class="line"></span></a>
 </header>
@@ -859,11 +863,24 @@ function initMotion(){
     .from(".hero-cta .btn",{opacity:0,y:22,duration:.7,stagger:.1},"-=0.6")
     .from(".scrollcue",{opacity:0,y:10,duration:.6},"-=0.3");
 
-  // slow Ken Burns drift on the hero media (continuous)
-  gsap.fromTo("#heroVid, #heroPoster",{scale:1.08},{scale:1.16,duration:16,ease:"sine.inOut",repeat:-1,yoyo:true});
+  // 3D depth: mouse-driven parallax (bg sits deep, content sits forward)
+  const heroEl=document.getElementById("hero"), stage=document.getElementById("hero3d");
+  gsap.set("#heroBg",{z:-180,scale:1.34,transformOrigin:"50% 50%"});
+  if(stage && window.matchMedia("(pointer:fine)").matches){
+    gsap.set(stage,{transformPerspective:1400,transformOrigin:"50% 50%"});
+    const ry=gsap.quickTo(stage,"rotationY",{duration:.9,ease:"power3"});
+    const rx=gsap.quickTo(stage,"rotationX",{duration:.9,ease:"power3"});
+    heroEl.addEventListener("pointermove",e=>{
+      const r=heroEl.getBoundingClientRect();
+      const nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
+      ry(nx*6); rx(-ny*4.5);
+    });
+    heroEl.addEventListener("pointerleave",()=>{ry(0);rx(0);});
+  }
+  // very slow, subtle breathing zoom (no jitter: GPU transform on a static image)
+  gsap.to("#heroBg",{scale:1.4,duration:22,ease:"sine.inOut",repeat:-1,yoyo:true});
 
-  // hero parallax on scroll
-  gsap.to("#heroVid",{yPercent:12,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
+  // hero parallax on scroll (content drifts up + fades)
   gsap.to(".hero-inner",{yPercent:-6,opacity:.5,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
 
   // generic reveals

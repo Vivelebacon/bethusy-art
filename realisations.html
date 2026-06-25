@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nos réalisations | Béthusy-Art — Architecture d'intérieur Lausanne</title>
+<meta name="description" content="Galerie de réalisations en architecture d'intérieur à Lausanne : cuisines, salles de bain, verrières, dressings, escaliers et ambiances sur mesure." />
+<link rel="canonical" href="https://www.bethusy-art.ch/galerie-realisations-architecture-interieure-lausanne/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Béthusy-Art & Design" />
+<meta property="og:title" content="Nos réalisations | Béthusy-Art — Architecture d'intérieur Lausanne" />
+<meta property="og:description" content="Galerie de réalisations en architecture d'intérieur à Lausanne : cuisines, salles de bain, verrières, dressings, escaliers et ambiances sur mesure." />
+<meta name="theme-color" content="#20262B" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2320262B'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23CEC2AB'>B</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://www.bethusy-art.ch" />
+<link rel="preload" as="image" href="https://www.bethusy-art.ch/wp-content/uploads/2024/11/Dining_room_with_modern_wooden_furniture-scaled.jpg" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="loading">
+
+<!-- preloader -->
+<div id="pre">
+  <div class="pm" id="pmText"><span>BÉTHUSY-ART</span></div>
+  <div class="bar"><i id="preBar"></i></div>
+  <div class="pc" id="preNum">0</div>
+</div>
+
+
+<!-- nav -->
+<nav class="nav" id="nav">
+  <a href="/" class="brand"><span><b>Béthusy-Art</b><small>& DESIGN · LAUSANNE</small></span></a>
+  <div class="nav-links">
+    <a href="/">Accueil</a>
+    <a href="/services">Nos Services</a>
+    <a href="/realisations" class="active">Réalisations</a>
+    <a href="/cours">Cours</a>
+    <a href="/ecole-dart">École d'art</a>
+    <a href="/a-propos">À propos</a>
+    <a href="/contact" class="btn">Contact</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- mobile menu -->
+<div class="mmenu" id="mmenu">
+  <a href="/">Accueil</a>
+  <a href="/services">Nos Services</a>
+  <a href="/realisations">Réalisations</a>
+  <a href="/cours">Cours</a>
+  <a href="/ecole-dart">École d'art</a>
+  <a href="/a-propos">À propos</a>
+  <a href="/contact">Contact</a>
+  <div class="mc">076 332 15 82 · info@bethusy-art.ch</div>
+</div>
+
+<!-- page hero -->
+<header class="page-hero">
+  <div class="ph-bg" style="background-image:url('https://www.bethusy-art.ch/wp-content/uploads/2024/11/Dining_room_with_modern_wooden_furniture-scaled.jpg')"></div>
+  <div class="ph-scrim"></div>
+  <div class="veil"></div>
+  <div class="frame"></div>
+  <div class="ph-inner">
+    <div class="crumb"><a href="/">Accueil</a><span>/</span><span>Réalisations</span></div>
+    <h1>Notre galerie de <span class="serif-it">projets</span></h1>
+    <p>Une sélection de réalisations résidentielles et professionnelles, sensibles, fonctionnelles et esthétiques.</p>
+  </div>
+</header>
+
+<section class="sec gallery" id="realisations">
+  <div class="wrap">
+    <p class="gal-intro reveal">Bienvenue dans notre galerie de réalisations en architecture d'intérieur à Lausanne. Chaque projet reflète notre approche sensible, fonctionnelle et esthétique, nourrie d'une attention particulière aux lignes, aux matières et aux ambiances. Filtrez par catégorie et cliquez sur une image pour l'agrandir.</p>
+    <div class="filters reveal" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lclose" id="lbClose" aria-label="Fermer">&times;</button>
+  <button class="lprev" id="lbPrev" aria-label="Précédent">&#8249;</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="lnext" id="lbNext" aria-label="Suivant">&#8250;</button>
+  <div class="lcap" id="lbCap"></div>
+</div>
+
+<section class="ctaband">
+  <div class="wrap">
+    <h2 class="reveal">Un projet en <span class="serif-it">tête ?</span></h2>
+    <p class="reveal">Parlons de votre espace et imaginons ensemble une réalisation à votre image.</p>
+    <div class="reveal" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="/contact" class="btn btn-fill">Demander un devis</a>
+      <a href="/services" class="btn">Nos services</a>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">Béthusy-Art<small>& DESIGN</small>
+        <p>Bureau d'architecture d'intérieur à Lausanne. Conception, rénovation, mobilier sur mesure et décoration depuis 2009.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navigation</h5>
+        <a href="/">Accueil</a>
+        <a href="/services">Nos services</a>
+        <a href="/realisations">Réalisations</a>
+        <a href="/cours">Cours</a>
+        <a href="/ecole-dart">École d'art</a>
+      </div>
+      <div class="foot-col">
+        <h5>Plus</h5>
+        <a href="/a-propos">À propos</a>
+        <a href="/guide-deco">Guide déco gratuit</a>
+        <a href="/contact">Contact</a>
+        <a href="/conditions-generales">Conditions générales</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <p>Avenue de Béthusy 21<br>1012 Lausanne</p>
+        <a href="tel:+41763321582">076 332 15 82</a>
+        <a href="mailto:info@bethusy-art.ch">info@bethusy-art.ch</a>
+        <a href="https://www.annettepasquier-art.ch" target="_blank" rel="noopener">annettepasquier-art.ch</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2025 Béthusy-Art & Design. Tous droits réservés.</span>
+      <span>Proposition de refonte : <a href="https://hugowebdesign.com/" target="_blank" rel="noopener">Hugo Web Design</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
